@@ -1,38 +1,58 @@
 package core;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.runners.MethodSorters;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class AppTest {
+	@BeforeClass
+	public static void BeforeClass02() {
+		System.out.println("@BeforeClass");
+	}
+	
+	@AfterClass
+	public static void AfterClass02() {
+		System.out.println("@AfterClass");
+	}
+	
+	@Before
+	public void Before() {
+		System.out.println("@Before");
+	}
+	
+	@After
+	public void After() {
+		System.out.println("@After");
+	}
+	
+	@Category(AcceptanceTest.class)
+	@Test
+	public void Test_01() {
+		System.out.println("Test_01");
+	}
+	
+	@Category(RegressionTest.class)
+	@Test
+	public void Test_02() {
+		System.out.println("Test_02");
+	}
+	
+	@Category({AcceptanceTest.class, RegressionTest.class})
+	@Test
+	public void Test_03() {
+		System.out.println("Test_03");
+	}
+	
+	@Test
+	public void Test_04() {
+		System.out.println("Test_04");
+	}
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }
